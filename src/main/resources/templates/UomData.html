@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="card"> <!--Card -->
+        <div class="card-header bg-primary text-white text-center">
+            <h3>Uom Data page</h3>
+        </div>
+        <div class="card-body">
+        <a th:href="@{/Uom/Excel}" class="btn btn-warning">Excel Export</a>
+        <a th:href="@{/Uom/pdf}" class="btn btn-warning">Export PDF</a>
+            <table class="table">
+                <tr>
+                    <td>ID</td>
+                    <td>Type</td>
+                    <td>Model</td>
+                    <td>Description</td>
+                    <td>Operations</td>
+                </tr>
+                <tr th:each="ob:${F2}"> 
+                <td th:text="${ob.UomId}"> </td>
+                <td th:text="${ob.UomType}"> </td>
+                <td th:text="${ob.UomModel}"> </td>
+                        <td th:text="${ob.UomDescription}"> </td>
+                        
+                        <td>
+                          <a th:href="@{/Uom/Edit?id={id}(id=${ob.UomId})}" class="btn btn-primary">Edit</a>				
+                          <a th:href="@{/Uom/del?id={id}(id=${ob.UomId})}" class="btn btn-primary">Delete</a>				
+                         </td>		 
+                </tr>
+            </table>
+
+        </div>
+        <div class="card-footer bg-info text-white text-center" th:if="${F6!=null}">
+            <span th:text="${F6}"></span>
+        </div>
+        <div class="card-footer bg-info text-white text-center" th:if="${F5!=null}">
+                <span th:text="${F5}"></span>
+            </div>
+
+    </div> <!--Card- end-->
+
+</div><!--container End-->
+</body>
+</html>
